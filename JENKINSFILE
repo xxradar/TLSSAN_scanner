@@ -34,7 +34,7 @@ pipeline {
         }
 
         stage('Container Scan') {
-          aquaMicroscanner imageName: '', notCompliesCmd: 'exit 1', onDisallowed: 'fail'
+          aquaMicroscanner imageName: '', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
         }
 
             post {
