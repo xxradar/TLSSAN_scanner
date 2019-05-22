@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Test and Aquascanner stage') {
             steps {
                 sh './scripts/test.sh'
             }
@@ -33,16 +33,7 @@ pipeline {
             }
         }
 
-        stage('Container Scan') {
-          aquaMicroscanner imageName: '', notCompliesCmd: '', onDisallowed: 'ignore', outputFormat: 'html'
-        }
 
-            post {
-                always {
-                    echo 'Aquascanner completed'
-                }
-            }
-        }
         stage('Push') {
             steps {
                 sh './scripts/push.sh'
