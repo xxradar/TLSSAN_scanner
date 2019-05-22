@@ -37,11 +37,21 @@ pipeline {
             steps {
                 sh './scripts/push.sh'
             }
+            post {
+                always {
+                    echo 'Push completed'
+                }
+            }
         }
 
         stage('Deploy') {
             steps {
                 sh './scripts/deploy.sh'
+            }
+            post {
+                always {
+                    echo 'Deploy completed'
+                }
             }
         }
     }
