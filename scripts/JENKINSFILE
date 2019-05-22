@@ -1,0 +1,49 @@
+pipeline {
+
+    agent any
+
+    environment {
+        DOCKER_USER = credentials('docker_user')
+        DOCKER_PASSWORD = credentials('docker_password')
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+                sh '''
+                    ./scripts/build.sh
+                '''
+            }
+            post {
+                always {
+                    echo 'build completed'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './scripts/test.sh'
+            }
+
+            post {
+                always {
+                    echo 'test completed'
+                }
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh './scripts/push.sh'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh './scripts/deploy.sh'
+            }
+        }
+    }
+}
