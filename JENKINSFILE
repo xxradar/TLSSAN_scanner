@@ -33,6 +33,16 @@ pipeline {
             }
         }
 
+        stage('Aquascanner') {
+            aquaMicroscanner imageName: 'fqdnsan_scan:$BUILD_ID', notCompliesCmd: 'exit 1', onDisallow: 'fail'
+            }
+
+            post {
+                always {
+                    echo 'test completed'
+                }
+            }
+        }
         stage('Push') {
             steps {
                 sh './scripts/push.sh'
