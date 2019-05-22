@@ -1,2 +1,2 @@
 #!/bin/bash
-../tlssan_scan.sh -h
+./tlssan_scan.sh -h
