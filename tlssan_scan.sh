@@ -1,8 +1,12 @@
 #!/bin/bash
-echo "******************************************"
-echo "tlssan_scan  <insert your fqdn> <TLS port>"
-echo "******************************************"
 
+if [ $1 == "-h" ]; then
+    openssl version
+    echo "******************************************"
+    echo "tlssan_scan  <insert your fqdn> <TLS port>"
+    echo "******************************************"
+    exit 0
+fi
 
 echo "*************************************************************"
 echo "obtaining X.509 SAN extensions ... (may take up to 5 seconds)"
