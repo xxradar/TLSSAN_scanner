@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_USER = credentials('DOCKER_USER')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        AQUA_TOKEN = credentials('AQUA_TOKEN')
     }
 
     stages {
@@ -21,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Test and Aquascanner stage') {
+        stage('Test') {
             steps {
                 sh './scripts/test.sh'
             }
