@@ -1,2 +1,2 @@
 # TLSSAN_scanner <br>
-Please use as tlssan_scanner.sh \<insert your fqdn\> \<TLS port\> <br>
+Please use as <code>tlssan_scanner.sh \<insert your fqdn\> \<TLS port\></code><br>
